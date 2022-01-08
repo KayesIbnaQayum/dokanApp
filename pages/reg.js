@@ -7,7 +7,7 @@ export default Reg = ({ navigation })=>
 {
 
     return(
-        <SafeAreaView style={{backgroundColor:'#F8F8F8', height:'100%',flexDirection:'column'}}>
+        <SafeAreaView style={{backgroundColor:'#F8F8F8', height:'100%',flexDirection:'column',flex:1}}>
           <ScrollView>
             <View style={styles.profile}>
             <Image
@@ -107,9 +107,16 @@ export default Reg = ({ navigation })=>
 
 
                 
-            <View style={{alignSelf:'center', top:10}}>
+            <View style={{alignSelf:'center', flexDirection:'row'}}>
                 <Text>Already have an account?</Text>
 
+                <TouchableWithoutFeedback
+            onPress={() =>
+                navigation.navigate("Home")
+                    }
+            >
+                <Text style={{color:'#2893E3'}}> Login</Text>
+                    </TouchableWithoutFeedback>
             </View>
 
 
@@ -168,7 +175,7 @@ const styles = StyleSheet.create({
         height:61.11,
         backgroundColor:'#F75F55',
         marginTop:20,
-        marginBottom:20
+        marginBottom:10
     },
     loginBtnText:{
       justifyContent: 'space-evenly', 

@@ -14,6 +14,9 @@ export default Home = ({ navigation })=>
                                     style={styles.logo}
                                     resizeMode='contain'
                                 />
+                
+            </View>
+            <View>
                 <Text style={styles.textSignIn}>Sign In</Text>
             </View>
             <View style={{marginTop:100, }}>
@@ -46,6 +49,7 @@ export default Home = ({ navigation })=>
             </View>
 
             </View>
+            <Text style={styles.textForget}>Forgot Password?</Text>
 
             <View style={[styles.loginBtn,{elevation:1}]}>
                     <View style={{flex:1, flexDirection:'row', alignSelf:'center'}}>
@@ -55,7 +59,7 @@ export default Home = ({ navigation })=>
                 </View>
 
 
-            <View style={{alignSelf:'center', top:100, flexDirection:'row'}}>
+            <View style={{alignSelf:'center', marginTop:30,flexDirection:'row'}}>
                 <View style={styles.socialBtn}>
                 <Image
                                     source={require('../assets/img/facebook.png')}
@@ -76,7 +80,7 @@ export default Home = ({ navigation })=>
                 navigation.navigate("registation")
                     }
             >
-            <View style={{alignSelf:'center', top:10}}>
+            <View style={{alignSelf:'center', marginTop:40}}>
                 <Text>Create New Account</Text>
             </View>
             </TouchableWithoutFeedback>
@@ -118,10 +122,10 @@ const styles = StyleSheet.create({
       fontFamily:'Roboto',
       textAlign:'right',
       marginRight:50,
-      top:225,
       fontSize:13,
       lineHeight:15.23,
-      fontWeight:'400'
+      fontWeight:'400',
+      marginTop:20
   },
   loginBtn:{
       width:308.68,

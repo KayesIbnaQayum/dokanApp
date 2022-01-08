@@ -1,51 +1,87 @@
 import React, {useState,useEffect} from 'react';
 import {View, Text, SafeAreaView, StyleSheet, Image, TextInput, ScrollView, Button, Alert,TouchableWithoutFeedback, FlatList, ImageBackground} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import Icon from 'react-native-vector-icons/Ionicons';
-import database from './database/database';
-import geoLocationClass from './components/geoLocation';
-import permissionClass from './components/permissionRequest';
-import LinearGradient from 'react-native-linear-gradient';
-import CheckBox from 'react-native-check-box';
-import { toHijri, toGregorian } from "hijri-converter";
-import notificationClass from './notification/notification'
-import {useIsFocused} from '@react-navigation/native';
-Icon.loadFont();
 
-import prayerTimeClass, {prayerTimeCal, getCurrentPrayerName, calPrayerTimeLeft} from './components/prayerTimeCal';
-
-import apiWeb from './api/web';
-
-
-import {
-    LineChart,
-    BarChart,
-    PieChart,
-    ProgressChart,
-    ContributionGraph,
-    StackedBarChart
-  } from "react-native-chart-kit";
-
-Icon.loadFont();
-Feather.loadFont();
-
-//login
-import {
-    GoogleSignin,
-    statusCodes,
-  } from '@react-native-google-signin/google-signin';
-import Database from './database/database';
   
 
 export default Home = ({ navigation })=>
 {
 
     return(
-        <SafeAreaView style={{backgroundColor:'#f7f6f7', height:'100%',flexDirection:'column'}}>
-            <view>
-                <Text>asdadasd</Text>
-            </view>
+        <SafeAreaView style={{backgroundColor:'#F8F8F8', height:'100%',flexDirection:'column'}}>
+            <View>
+            <Image
+                                    source={require('../assets/img/logo.png')}
+                                    style={styles.logo}
+                                    resizeMode='contain'
+                                />
+                <Text style={styles.textSignIn}>Sign In</Text>
+            </View>
+            <View style={{marginTop:100, }}>
+            <View style={{flexDirection:'row', alignSelf:'center', marginTop:15}}>
+            <View style={{elevation:4, left:40, alignSelf:'center'}}>
+                <Image
+                                        source={require('../assets/img/email.png')}
+                                        style={{height:18, width:18}}
+                                        resizeMode='contain'
+                                    />
+            </View>
+            <TextInput
+                    style={[styles.textInput,{elevation:3,paddingLeft:60}]}
+                    placeholder="Email"
+                />
+            </View>
 
+            <View style={{flexDirection:'row', alignSelf:'center', marginTop:15}}>
+            <View style={{elevation:4, left:40, alignSelf:'center'}}>
+                <Image
+                                        source={require('../assets/img/lock.png')}
+                                        style={{height:18, width:18}}
+                                        resizeMode='contain'
+                                    />
+            </View>
+            <TextInput
+                    style={[styles.textInput,{elevation:3,paddingLeft:60}]}
+                    placeholder="Password"
+                />
+            </View>
+
+            </View>
+
+            <View style={[styles.loginBtn,{elevation:1}]}>
+                    <View style={{flex:1, flexDirection:'row', alignSelf:'center'}}>
+                        <Text style={[styles.loginBtnText,{justifyContent: 'space-evenly'}]}>Login</Text>
+                    </View>
+                   
+                </View>
+
+
+            <View style={{alignSelf:'center', top:100, flexDirection:'row'}}>
+                <View style={styles.socialBtn}>
+                <Image
+                                    source={require('../assets/img/facebook.png')}
+                                    style={{ flex:1,height:22.91, width:12.36, alignSelf:'center'}}
+                                    resizeMode='contain'
+                                />
+                </View>
+                <View style={styles.socialBtn}>
+                <Image
+                                    source={require('../assets/img/google.png')}
+                                    style={{ flex:1,height:22.91, width:22.91, alignSelf:'center'}}
+                                    resizeMode='contain'
+                                />
+                </View>
+            </View>
+            <TouchableWithoutFeedback
+            onPress={() =>
+                navigation.navigate("registation")
+                    }
+            >
+            <View style={{alignSelf:'center', top:10}}>
+                <Text>Create New Account</Text>
+            </View>
+            </TouchableWithoutFeedback>
+
+            
 
         </SafeAreaView>
        
@@ -56,132 +92,63 @@ export default Home = ({ navigation })=>
 
 const styles = StyleSheet.create({
 
-    header:{
-        backgroundColor:'rgba(255, 255, 255, 1)',
-        paddingBottom:15
-    },
-    headerWrapper:{
-        flexDirection:'row',
-        justifyContent: 'space-between',
-        paddingTop:20,
-        alignItems: 'center'
-    },
-    profilePicture:{
-        height:50,
-        width:50,
-        borderRadius:40,
+  logo:{
+      width:165.67,
+      height:50.8,
+      alignSelf:'center',
+      top:83.05,
+  },
+  textSignIn:{
+    fontWeight:'700',
+      fontSize:25,
+      lineHeight:29.3,
+      textAlign:'center',
+      lineHeight:29.3,
+      color:'black',
+      fontFamily:'Roboto',
+  },
+  textInput:{
+    backgroundColor:'#FFFFFF',
+    height:61.11,
+    borderRadius:10,
+    width:308.68,
+   
+  },
+  textForget:{
+      fontFamily:'Roboto',
+      textAlign:'right',
+      marginRight:50,
+      top:225,
+      fontSize:13,
+      lineHeight:15.23,
+      fontWeight:'400'
+  },
+  loginBtn:{
+      width:308.68,
+      alignSelf:'center',
+      borderRadius:10,
+      height:61.11,
+      backgroundColor:'#F75F55',
+    marginTop:50
+  },
+  loginBtnText:{
+    justifyContent: 'space-evenly', 
+    alignItems: 'center',
+    alignSelf:'center',
+    fontSize:17,
+    lineHeight:19.92,
+    letterSpacing:0.15,
+    fontWeight:'500',
+    color:'white',
 
-    },
-    searchbox:{
-        width:"100%",
-        backgroundColor:'#FFF',
-        borderRadius:40,
-        padding:10,
-
-        alignSelf:'center'
-    },
-
-
-    prayerTime:{
-        flex:3,
-        flexDirection:'column',
-        justifyContent: 'space-evenly'
-    },
-
-    prayerTimeInner:{
-        flex:1,
-        paddingLeft:20,
-        paddingTop:10,
-        paddingBottom:10,
-        paddingRight:20,
-    },
-
-    prayerTimeIcon:{
-        marginRight:15, 
-        marginTop:35  
-    },
-
-    flexBox2:{
-        flex:2
-    },
-    flexBox1:{
-        flex:1, 
-        alignItems:'flex-end',
-        paddingRight:20,
-        flexDirection:'column' 
-    },
-    flexdirectionRow:{
-        flexDirection:'row'
-    },
-
-    bodyMenuContainer:{
-        flex:2,
-        flexDirection:"row",
-        margin:10  
-    },
-
-    menuIcon:{
-        flex:1,
-
-        height:95,
-        justifyContent: "center", 
-        alignItems: "center",
-    
-
-        
-    },
-    menuLeft:{
-        flex:1,
-        height:95,
-        alignItems: "flex-start",
-        marginLeft:12
-    },
-    iconDiv:{
-        elevation: 3,
-        padding:5,
-        marginBottom:5,
-        borderRadius:5,
-        backgroundColor:'#FFF',
-    },
-    menuIconImage:{
-        height:60,
-        width:60, 
-
-    },
-    smallIcon:{
-        height:30,
-        width:30
-    },
-    viewbox:{
-        minHeight:50,
-        backgroundColor:'#ffffff',
-        marginTop:13,
-        padding:10,
-        borderRadius:12
-    },
-    nextButtonOpacity:{
-        opacity:.5,
-        bottom:0,
-        left:0
-    },
-    Quranitem:{
-        flex:1,
-        minHeight:80,
-        padding:20,
-        backgroundColor:'#FFFFFF',
-        flexDirection:'row',
-        elevation: 2
-    }
-});
-
-const StyleText = StyleSheet.create({
-    boldText:{
-        fontWeight:"bold",
-        fontSize:20,
-    },
-
-    TextWhite:{
-        color: '#ffffff',
-    },
-
+  },
+  socialBtn:{
+      width:56,
+      height:56,
+      borderRadius:10,
+      backgroundColor:'#FFFFFF',
+      marginRight:14,
+      alignSelf:'center',
+      elevation:1
+  }
 });

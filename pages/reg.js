@@ -12,14 +12,14 @@ export default Reg = ({ navigation })=>
             <View style={styles.profile}>
             <Image
                                     source={require('../assets/img/profile.png')}
-                                    style={{ flex:1,height:14, width:25, alignSelf:'center',elevation:2}}
+                                    style={{ flex:1,height:14, width:25, alignSelf:'center'}}
                                     resizeMode='contain'
                                 />
 
                             
                             <Image
                                     source={require('../assets/img/camera.png')}
-                                    style={{position:'absolute',height:60, width:60, alignSelf:'flex-end',elevation:2,top:80,right:-11}}
+                                    style={{position:'absolute',height:60, width:60, alignSelf:'flex-end',top:80,right:-11}}
                                     resizeMode='contain'
                                 />
                           

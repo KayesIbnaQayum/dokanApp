@@ -11,6 +11,9 @@
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
  import Home from './pages/home';
  import Reg from './pages/reg';
+ import ProductPage from './pages/product';
+ import profile from './pages/profile';
+import productTabPage from './pages/productTabPage';
  
  
  
@@ -21,6 +24,16 @@
    return (
      <NavigationContainer>
        <Stack.Navigator>
+       <Stack.Screen
+           name="productTabPage"
+           component={productTabPage}
+           options={{headerShown : false}}
+         />
+       <Stack.Screen
+           name="ProductPage"
+           component={ProductPage}
+           options={{headerShown : false}}
+         />
          <Stack.Screen
            name="Home"
            component={Home}
@@ -31,7 +44,13 @@
            component={Reg}
            options={{headerShown : false}}
          />
-        
+
+          <Stack.Screen
+           name="Profile"
+           component={profile}
+           options={{headerShown : false}}
+         />
+
        </Stack.Navigator>
      </NavigationContainer>
    );

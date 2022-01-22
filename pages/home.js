@@ -16,10 +16,10 @@ export default Home = ({ navigation })=>
                                 />
                 
             </View>
-            <View>
+            <View style={{top:140}}>
                 <Text style={styles.textSignIn}>Sign In</Text>
             </View>
-            <View style={{marginTop:100, }}>
+            <View style={{marginTop:170, }}>
             <View style={{flexDirection:'row', alignSelf:'center', marginTop:15}}>
             <View style={{elevation:4, left:40, alignSelf:'center'}}>
                 <Image
@@ -51,12 +51,18 @@ export default Home = ({ navigation })=>
             </View>
             <Text style={styles.textForget}>Forgot Password?</Text>
 
+            <TouchableWithoutFeedback
+            onPress={() =>
+                navigation.navigate("ProductPage")
+                    }
+            >
             <View style={[styles.loginBtn,{elevation:1}]}>
                     <View style={{flex:1, flexDirection:'row', alignSelf:'center'}}>
                         <Text style={[styles.loginBtnText,{justifyContent: 'space-evenly'}]}>Login</Text>
                     </View>
                    
                 </View>
+            </TouchableWithoutFeedback>
 
 
             <View style={{alignSelf:'center', marginTop:30,flexDirection:'row'}}>
@@ -80,7 +86,7 @@ export default Home = ({ navigation })=>
                 navigation.navigate("registation")
                     }
             >
-            <View style={{alignSelf:'center', marginTop:40}}>
+            <View style={{alignSelf:'center', marginTop:10}}>
                 <Text>Create New Account</Text>
             </View>
             </TouchableWithoutFeedback>
@@ -133,7 +139,7 @@ const styles = StyleSheet.create({
       borderRadius:10,
       height:61.11,
       backgroundColor:'#F75F55',
-    marginTop:50
+    marginTop:20
   },
   loginBtnText:{
     justifyContent: 'space-evenly', 
